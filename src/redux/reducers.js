@@ -1,13 +1,31 @@
 import * as actionTypes from './actionTypes';
 
-const initialState = {
+const initialStateRecipe = {
     recipes : [],
     loading : false,
     error : false,
+}
+const initialSearch = {
     searchItem : "chicken"
 }
+export const searchReducer = (state = initialSearch,action) =>{
+    switch (action.type) {
+         case actionTypes.UPDATE_SEARCH_ITEM:
+            return {
+                ...state,
+                loading : false,
+                recipes : [],
+                error :false,
+                searchItem : action.payload.searchItem,
+            }
+            
+        default:
+            return state;
+    }
 
-export const recipeReducer = (state = initialState,action)=>{
+}
+
+export const recipeReducer = (state = initialStateRecipe,action)=>{
 
     switch (action.type) {
         case actionTypes.FETCH_RECIPE:
@@ -28,15 +46,6 @@ export const recipeReducer = (state = initialState,action)=>{
                 recipes : [],
                 error :action.payload.error
             }
-        case actionTypes.UPDATE_SEARCH_ITEM:
-            return {
-                ...state,
-                loading : false,
-                recipes : [],
-                error :false,
-                searchItem : action.payload.searchItem,
-            }
-            
         default:
             return state;
     }

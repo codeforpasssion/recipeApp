@@ -1,7 +1,11 @@
-import { createStore,applyMiddleware } from 'redux';
+import { createStore,applyMiddleware,combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import { recipeReducer } from './reducers';
+import { recipeReducer,searchReducer } from './reducers';
+const rootReducer = combineReducers({
+    recipe : recipeReducer,
+    searchItem : searchReducer,
+})
 
-export const store = createStore(recipeReducer,composeWithDevTools(applyMiddleware(thunk)));
+export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)));

@@ -10,7 +10,6 @@ const RecipeApp = (props) => {
     const url = `https://api.edamam.com/search?q=${searchItem}&app_id=${AppId}&app_key=${AppKey}`;
 
     useEffect(() => {
-        debugger;
        fetchRecipe(url)
     }, [searchItem]);
     return (
@@ -28,10 +27,9 @@ const RecipeApp = (props) => {
 }
 
 const mapStateToProps = (state)=>{
-    debugger;
     return {
-        recipes :  state.recipes,
-        searchItem : state.searchItem
+        recipes :  state.recipe.recipes,
+        searchItem : state.searchItem.searchItem
     }
 }
 
