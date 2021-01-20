@@ -8,7 +8,7 @@ module.exports = {
     entry : './src/index.js',
     output : {
         filename : '[name].bundle.js',
-        path : path.resolve(__dirname,'dist')
+        path : path.resolve(__dirname,'build')
     },
     devtool: 'eval-source-map',
     module : {
@@ -30,7 +30,7 @@ module.exports = {
     }),
     ],
     devServer : {
-        contentBase : path.join(__dirname,'dist'),
+        contentBase : path.join(__dirname,'build'),
         port : 9000 ,
         compress : true,
         hot: true,
