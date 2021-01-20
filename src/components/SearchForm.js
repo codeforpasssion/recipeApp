@@ -1,14 +1,16 @@
 import React,{useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {updateSearchItem} from '../redux/actions';
+import {connect} from 'react-redux';
 
-const SearchForm = ({handleSearch}) => {
+const SearchForm = ({updateSearch}) => {
     const [recipe, setRecipe] = useState('')
     const handleSubmit = (event)=>{
         event.preventDefault();
         event.stopPropagation();
         console.log(recipe)
-        handleSearch(recipe);
+        updateSearch(recipe);
     }
     return (
         <div className="search-container">
@@ -24,4 +26,10 @@ const SearchForm = ({handleSearch}) => {
     )
 }
 
-export default SearchForm
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        updateSearch : (recipe)=>dispatch(updateSearchItem(recipe))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(SearchForm);

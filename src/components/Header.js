@@ -1,13 +1,12 @@
 import React from 'react'
 import SearchForm from './SearchForm'
-const Header = ({handleSearch}) => {
+const Header = () => {
     return (
         <>
             <header className="recipe-header">
-                    <h1>Recipe App</h1>
-                    
+                    <h1>Recipe App</h1> 
             </header>
-            <SearchForm handleSearch={handleSearch}/>
+            <SearchForm/>
         </>
     )
 }
