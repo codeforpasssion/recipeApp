@@ -37,12 +37,12 @@ return {
 export const fetchRecipeApi = (url)=>{
     return async (dispatch)=> {
         dispatch(fetchRecipe());
-        try{
+        try {
             const response = await fetch(url);
             const data = await response.json();
             dispatch(fetchRecipeSuccess(data.hits));
         }catch(error){
-            dispatch(fetchRecipeFailure(error.msg))
+            dispatch(fetchRecipeFailure(error.message))
         }
     }
 }

@@ -13,9 +13,6 @@ export const searchReducer = (state = initialSearch,action) =>{
          case actionTypes.UPDATE_SEARCH_ITEM:
             return {
                 ...state,
-                loading : false,
-                recipes : [],
-                error :false,
                 searchItem : action.payload.searchItem,
             }
             
@@ -40,6 +37,7 @@ export const recipeReducer = (state = initialStateRecipe,action)=>{
                 recipes : action.payload.data
             }
         case actionTypes.FETCH_RECIPE_FAILURE:
+        debugger;
             return {
                 ...state,
                 loading : false,
